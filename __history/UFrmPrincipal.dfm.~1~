@@ -1,0 +1,41 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  BiDiMode = bdLeftToRight
+  BorderStyle = bsSingle
+  Caption = 'Chamada de Emergencia'
+  ClientHeight = 476
+  ClientWidth = 748
+  Color = 10289152
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = mmPrincipal
+  OldCreateOrder = False
+  ParentBiDiMode = False
+  Position = poScreenCenter
+  WindowState = wsMaximized
+  PixelsPerInch = 96
+  TextHeight = 13
+  object mmPrincipal: TMainMenu
+    Left = 360
+    Top = 240
+    object mmOcorrencia: TMenuItem
+      Caption = 'Ocorrencia'
+      object miChamados: TMenuItem
+        Caption = 'Chamados'
+      end
+    end
+    object Relatorio1: TMenuItem
+      Caption = 'Relatorio'
+      object miChamadosAbertos: TMenuItem
+        Caption = 'Chamados Abertos'
+      end
+      object miChamadosFechados: TMenuItem
+        Caption = 'Chamados Fechados'
+      end
+    end
+  end
+end
