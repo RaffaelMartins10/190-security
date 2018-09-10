@@ -1,4 +1,9 @@
-\.git
-\__history
-\__recovery
-\Win32
+**/*.exe
+*.dproj.local
+*.identcache
+**/__history
+/Dcu
+/DB
+/__history
+/__recovery
+/Win32
