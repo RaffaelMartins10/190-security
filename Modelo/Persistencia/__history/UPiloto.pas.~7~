@@ -1,0 +1,53 @@
+unit UPiloto;
+
+interface
+
+uses
+    UEntidade
+  , UPais
+  ;
+
+type
+  TPiloto = class
+  private
+    FNome: String;
+    FDataNascimento: TDate;
+    FPais: TPAIS;
+
+    procedure DefinePais(const coPAIS: TPAIS);
+
+  public
+    constructor Create;
+    destructor Destroy; override;
+
+    property NOME: String read FNome write FNome;
+    property DATA_NASCIMENTO: TDate read FDataNascimento write FDataNascimento;
+    property PAIS: TPAIS read FPais write FPais;
+  end;
+
+const
+  TBL_PILOTO                  = 'PILOTO';
+  FLD_PILOTO_NOME             = 'NOME';
+  FLD_PILOTO_DATA_NASCIMENTO  = 'DATA_NASCIMENTO';
+  FLD_PILOTO_ID_PAIS          = 'ID_PAIS';
+
+implementation
+
+{ TPiloto }
+
+uses
+    SysUtils
+  ;
+
+constructor TPiloto.Create;
+begin
+  FPais := TPAIS.Create
+end;
+
+destructor TPiloto.Destroy;
+begin
+  FreeAndNil(FPais);
+  inherited;
+end;
+
+end.

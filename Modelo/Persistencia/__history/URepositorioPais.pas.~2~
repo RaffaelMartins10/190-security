@@ -1,0 +1,18 @@
+unit URepositorioPais;
+
+interface
+
+uses
+    URepositorioDB
+  , UPais
+  ;
+
+type
+  TRepositorioPais = class(TRepositorioDB<TPAIS>)
+  protected
+
+  end;
+
+implementation
+
+end.

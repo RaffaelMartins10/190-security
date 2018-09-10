@@ -1,0 +1,23 @@
+unit URepositorioPais;
+
+interface
+
+uses
+    URepositorioDB
+  , UPais
+  , SqlExpr
+  ;
+
+type
+  TRepositorioPais = class(TRepositorioDB<TPAIS>)
+  protected
+    //Atribui os dados do banco no objeto
+    procedure AtribuiDBParaEntidade(const coPAIS: TPAIS); override;
+    //Atribui os dados do objeto no banco
+    procedure AtribuiEntidadeParaDB(const coPAIS: TPAIS;
+                                    const coSQLQuery: TSQLQuery); override;
+  end;
+
+implementation
+
+end.

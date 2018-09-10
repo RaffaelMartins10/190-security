@@ -1,0 +1,65 @@
+unit URegraCRUDPiloto;
+
+interface
+
+uses
+    URegraCRUD
+  , UEntidade
+  , UPiloto
+  ;
+
+type
+  TRegraCRUDPiloto = class(TRegraCRUD)
+  private
+    procedure ValidaNome(const csNome: String);
+    procedure ValidaDataNascimento(const coDataNascimento: TDate);
+
+  protected
+    procedure ValidaAtualizacao(const coENTIDADE: TENTIDADE); override;
+    procedure ValidaInsercao(const coENTIDADE: TENTIDADE); override;
+
+  public
+    constructor Create; override;
+
+  end;
+
+implementation
+
+uses
+    SysUtils
+  , UMensagens
+  , UUtilitarios
+  , URepositorioPiloto
+  , URepositorioDB
+  ;
+
+{ TRegraCRUDPais }
+
+constructor TRegraCRUDPiloto.Create;
+begin
+  inherited;
+  FRepositorioDB := TRepositorioDB<TENTIDADE>(TRepositorioPiloto.Create);
+end;
+
+procedure TRegraCRUDPiloto.ValidaAtualizacao(const coENTIDADE: TENTIDADE);
+begin
+  inherited;
+  ValidaNome(TPILOTO(coENTIDADE).NOME);
+  ValidaDataNascimento(TPILOTO(coENTIDADE).DATA_NASCIMENTO);
+end;
+
+procedure TRegraCRUDPiloto.ValidaInsercao(const coENTIDADE: TENTIDADE);
+begin
+  inherited;
+  ValidaNome(TPAIS(coENTIDADE).NOME);
+end;
+
+procedure TRegraCRUDPiloto.ValidaNome(const csNome: String);
+begin
+  if Trim(csNome) = EmptyStr then
+  begin
+    raise EValidacaoNegocio.Create(STR_PAIS_NOME_NAO_INFORMADO);
+  end;
+end;
+
+end.

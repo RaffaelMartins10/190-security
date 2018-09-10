@@ -1,0 +1,66 @@
+unit URepositorioPiloto;
+
+interface
+
+uses
+    URepositorioDB
+  , UPais
+  , UPiloto
+  , URepositorioPais
+  , SqlExpr
+  ;
+
+type
+  TRepositorioPiloto = class(TRepositorioDB<TPILOTO>)
+  private
+    FRepositorioPais: TRepositorioPais;
+
+  protected
+    //Atribui os dados do banco no objeto
+    procedure AtribuiDBParaEntidade(const coPILOTO: TPILOTO); override;
+    //Atribui os dados do objeto no banco
+    procedure AtribuiEntidadeParaDB(const coPILOTO: TPAIS;
+                                    const coSQLQuery: TSQLQuery); override;
+  public
+    constructor Create;
+    destructor Destroy; override;
+  end;
+
+implementation
+
+uses
+    UEntidade
+  , UMensagens
+  , SysUtils
+  ;
+
+{ TRepositorioPais }
+
+constructor TRepositorioPiloto.Create;
+begin
+  Inherited Create(TPILOTO, TBL_PILOTO, FLD_ENTIDADE_ID, STR_PILOTO);
+  FRepositorioPais := TRepositorioPais.Create;
+end;
+
+destructor TRepositorioPiloto.Destroy;
+begin
+  FreeAndNil(FRepositorioPais);
+  inherited;
+end;
+
+procedure TRepositorioPiloto.AtribuiDBParaEntidade(const coPILOTO: TPILOTO);
+begin
+  inherited;
+  coPILOTO.NOME            := FSQLSelect.FieldByName(FLD_PILOTO_NOME).AsString;
+  coPILOTO.DATA_NASCIMENTO := FSQLSelect.FieldByName(FLD_PILOTO_DATA_NASCIMENTO).AsDateTime;
+  coPILOTO.PAIS            := TPAIS(FRepositorioPais.Retorna(FSQLSelect.FieldByName(FLD_PILOTO_ID_PAIS).AsInteger));
+end;
+
+procedure TRepositorioPiloto.AtribuiEntidadeParaDB(const coPAIS: TPAIS;
+  const coSQLQuery: TSQLQuery);
+begin
+  inherited;
+  coSQLQuery.ParamByName(FLD_PAIS_NOME).AsString := coPILOTO.NOME;
+end;
+
+end.
