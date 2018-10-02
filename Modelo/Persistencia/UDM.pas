@@ -4,14 +4,15 @@ interface
 
 uses
   SysUtils, Classes, DB, SqlExpr, FMTBcd
-  , UMensagens, DBXFirebird, DBXInterBase
-  , DBXCommon, DBXMySQL
+  , UMensagens, DBXCommon, Data.DBXMySQL
   ;
 
 type
   TdmEntra21 = class(TDataModule)
     SQLConnection: TSQLConnection;
     SQLSelect: TSQLDataSet;
+    SQLTableEndereco: TSQLTable;
+    SQLTableEnderecoendereco: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     FTransaction: TDBXTransaction;

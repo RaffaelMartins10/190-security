@@ -97,7 +97,7 @@ uses
   , DB
   ;
 
-{ TPersisteDB }
+{ TRepositorioDB<T> }
 
 constructor TRepositorioDB<T>.Create(const coEntidadeClasse: TEntidadeClasse;
                                      const csNomeTabela: String;

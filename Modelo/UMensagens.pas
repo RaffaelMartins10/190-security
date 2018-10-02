@@ -28,19 +28,25 @@ resourcestring
   STR_ABORTAR                     = 'abortar';
   STR_FINALIZAR                   = 'finalizar';
 
-  //País
-  STR_PAIS                    = 'País';
-  STR_PAIS_NOME_NAO_INFORMADO = 'Nome do país não foi informado.';
-  STR_PAIS_NOME_JA_EXISTE     = 'Já existe um outro país cadastrado com este nome!';
+  //Policial
+  STR_POLICIAL = 'Policial';
+  STR_policial_NOME_NAO_INFORMADO = 'Nome do policial não informado';
+  STR_policial_NOME_JA_EXISTE = 'Nome do policial ja existe';
 
-  //Fabricante
-  STR_FABRICANTE                    = 'Fabricante';
-  STR_FABRICANTE_NOME_NAO_INFORMADO = 'Nome do fabricante não foi informado.';
+  //Usuário
+  STR_SENHA_NAO_SEGURA           = 'Senha digitada não é segura, senha deve ter no mínimo %d caracteres';
+  STR_SENHAS_NAO_CONFEREM        = 'Senhas não conferem';
+  STR_USUARIO_NOME_NAO_INFORMADO = 'Nome do usuário não foi informado';
+  STR_SENHA_ATUAL_NAO_CONFERE    = 'Senha atual não confere';
 
-  //Piloto
-  STR_PILOTO                    = 'Piloto';
-  STR_PILOTO_NOME_NAO_INFORMADO = 'Nome do piloto não foi informado';
-  STR_PILOTO_MENOR_DE_IDADE     = 'Piloto é menor de idade';
+  //Emergencia
+  STR_EMERGENCIA = 'Emergencia';
+
+  //Cidadão
+  STR_CIDADAO = 'Cidadão';
+
+  //Login
+  STR_USUARIO_OU_SENHA_SAO_INVALIDOS = 'Usuário ou senha são inválidos';
 
 implementation
 
